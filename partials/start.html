@@ -1,9 +1,14 @@
-<div id="start" class="view" ng-init="getLocation()">
+<div id="start" class="view">
     <p>GO</p>
 
     <input type="button" class="btn btn-default btn-lg btn-block" value="Commencer" ng-click="start()">
 
-    <span>{{$scope.location}}</span>
+    <ul>
+        <li ng-repeat="friend in friends">
+            {{friend.first_name}} {{friend.last_name}} : {{friend.hometown_location.city}}
+        </li>
+
+    </ul>
 
     <div id="map" ng-show="showMap"></div>
 </div>
