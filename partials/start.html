@@ -1,0 +1,9 @@
+<div id="start" class="view" ng-init="getLocation()">
+    <p>GO</p>
+
+    <input type="button" class="btn btn-default btn-lg btn-block" value="Commencer" ng-click="start()">
+
+    <span>{{$scope.location}}</span>
+
+    <div id="map" ng-show="showMap"></div>
+</div>
