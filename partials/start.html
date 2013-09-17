@@ -1,14 +1,35 @@
 <div id="start" class="view">
-    <p>GO</p>
+    <div id="optSection">
+        <div class="radio col-lg-3">
+            <label ng-class="{'muted' : started}">
+                <input type="radio" name="selectLoc" id="selectLoc1" value="1" ng-disabled="userCity.found == false || started" ng-model="useLoc" ng-click="createDefaultUserMarker()" />
+                Utiliser ma position Facebook ({{usercity.name}})
+            </label>
+        </div>
+        <div class="col-lg-1">
+            <strong>OU</strong>
+        </div>
+        <div class="radio col-lg-3">
+            <label ng-class="{'muted' : started}">
+                <input type="radio" name="selectLoc" id="selectLoc2" value="2" ng-model="useLoc" ng-disabled="started" />
+                S&eacute;lectionner manuellement ma position sur la carte
+            </label>
+        </div>
+    </div>
 
-    <input type="button" class="btn btn-default btn-lg btn-block" value="Commencer" ng-click="start()">
+    <div id="mapSection">
+        <div id="map"></div>
 
-    <ul>
-        <li ng-repeat="friend in friends">
-            {{friend.first_name}} {{friend.last_name}} : {{friend.hometown_location.city}}
-        </li>
+        <div ng-show="started">
+            <p>Dur&eacute;e de la contamination : <timer one-second="3600">{{hours}} heures {{minutes}} minutes {{seconds}} secondes.</timer></p>
+            <p>Amis contamin&eacute;s : {{infectedFriends.length}} / {{locatedFriends}}</p>
+            <p>Dernier ami contamin&eacute; : {{lastInfectedFriend}}</p>
+        </div>
+    </div>
 
-    </ul>
+    <div id="goSection" ng-hide="started">
+        <p>Lorsque vous vous sentez pr&ecirc;t(e) &agrave; lancer la contamination, cliquez sur le bouton ci-dessous :</p>
 
-    <div id="map" ng-show="showMap"></div>
+        <input type="button" class="btn btn-default btn-lg btn-block" value="Braiiiiin !" ng-click="start()" ng-disabled="usermarker == null" />
+    </div>
 </div>
